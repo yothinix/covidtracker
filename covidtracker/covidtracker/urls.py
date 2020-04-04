@@ -16,6 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from patients.views import current_datetime, HomepageView
+from check.views import PatientTemperatureView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path("simple/", current_datetime),
+    path("", HomepageView.as_view()),
+    path("temperature/", PatientTemperatureView.as_view())
 ]
