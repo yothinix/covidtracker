@@ -7,6 +7,7 @@ class Patient(models.Model):
     email = models.EmailField(max_length=256, null=True, blank=True)
     is_positive = models.BooleanField()
     detail = models.TextField(max_length=1024, null=True, blank=True)
+    last_update = models.DateTimeField(null=True)
 
     def __str__(self):
         return f"{self.id}: {self.name} ({self.is_positive})"

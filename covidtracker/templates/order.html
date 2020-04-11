@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% load tz %}
+
+{% block title %}Patient at {% now "SHORT_DATETIME_FORMAT" %}{% endblock %}
+{% block menu %}{% endblock %}
+
+{% block content %}
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Email</th>
+        <th scope="col">Is Positive</th>
+        <th scope="col">Last Update</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for patient in all_patient %}
+        <tr>
+          <th scope="row">{{ patient.id }}</th>
+          <td>{{ patient.name|capfirst }}</td>
+          <td>{{ patient.age }}</td>
+          <td>{{ patient.email|default_if_none:"-" }}</td>
+          <td>
+            {% if patient.is_positive %}
+              <span class="badge badge-pill badge-success">ติดนะ</span>
+            {% else %}
+              <span class="badge badge-pill badge-danger">ติดมั้ยนะ</span>
+            {% endif %}
+          </td>
+          {% timezone "Asia/Bangkok" %}
+            <td>{{ patient.last_update }}</td>
+          {% endtimezone %}
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+{% endblock %}
