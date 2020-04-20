@@ -30,3 +30,4 @@ urlpatterns = [
     path("home-old", HomepageView.as_view()),
     path("temperature/", PatientTemperatureView.as_view()),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+# https://docs.djangoproject.com/en/3.0/howto/static-files/
