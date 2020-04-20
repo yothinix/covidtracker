@@ -16,15 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from core.views import HomeView, OrderView
+from core.views import HomeView, PatientView
 from patients.views import current_datetime, HomepageView
 from check.views import PatientTemperatureView
 
 urlpatterns = [
-    path("", HomeView.as_view()),
-    path("order/", OrderView.as_view()),
+    path("", HomeView.as_view(), name="dashboard"),
+    path("patient/", PatientView.as_view(), name="patient"),
     path('admin/', admin.site.urls),
     path("simple/", current_datetime),
-    path("", HomepageView.as_view()),
+    path("home-old", HomepageView.as_view()),
     path("temperature/", PatientTemperatureView.as_view()),
 ]
