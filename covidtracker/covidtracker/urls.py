@@ -21,10 +21,12 @@ from django.urls import path
 from core.views import HomeView, PatientView
 from patients.views import current_datetime, HomepageView
 from check.views import PatientTemperatureView
+from products.views import ProductView
 
 urlpatterns = [
     path("", HomeView.as_view(), name="dashboard"),
     path("patient/", PatientView.as_view(), name="patient"),
+    path("product/", ProductView.as_view(), name="product"),
     path('admin/', admin.site.urls),
     path("simple/", current_datetime),
     path("home-old", HomepageView.as_view()),
